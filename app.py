@@ -7,18 +7,19 @@ app = Flask(__name__)
 UPLOAD_FOLDER = "uploaded_files"
 
 
+# Error handler registration
 @app.errorhandler(400)
 def bad_request(error):
     return render_template("400.html", error=error), 400
 
 
 @app.route('/')
-def upload_file():
+def upload_page():
     return render_template("upload_page.html")
 
 
-@app.route("/upload", methods=["POST"])
-def upload():
+@app.route("/upload-and-result", methods=["POST"])
+def upload_and_result():
     file = request.files.get("file")
     # Check if the file is .dat file
     if not file or not file.filename.endswith(".dat"):
