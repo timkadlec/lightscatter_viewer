@@ -1,8 +1,6 @@
 import re
 import numpy
 
-file = "static/spectrolight/241101BSA-A1A.noname-0-0.dat"
-
 
 def is_scientific_number(input):
     """
