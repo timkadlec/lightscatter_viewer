@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, abort
+import time
 from process_spectrolight import process_spectrolight_dat_file
 from forms import UploadForm
 import os
@@ -28,7 +29,10 @@ def upload_and_result():
     form = UploadForm()
 
     if form.validate_on_submit():
-        file = form.file.data  # Safe — already validated by Flask-WTF
+        # Track request time
+        start_time = time.perf_counter()
+
+        file = form.file.data
 
         # Store the file
         os.makedirs(UPLOAD_FOLDER, exist_ok=True)
@@ -39,10 +43,14 @@ def upload_and_result():
         # Process the .dat file
         sections = process_spectrolight_dat_file(filepath)
 
+        # Calculate elapsed time
+        elapsed_time = time.perf_counter() - start_time
+
         return render_template(
             "spectrolight_results.html",
             sections=sections,
-            filename=filename
+            filename=filename,
+            elapsed_time=elapsed_time  # Eventual preparation for time that took to process the .dat file
         )
 
     # If GET request or validation failed
