@@ -35,7 +35,8 @@ body {
     hover:file:bg-primary-dark
 }
 
-.upload-container button {
+.upload-container button,
+.upload-container input[type=submit] {
     @apply w-full bg-secondary hover:bg-secondary-dark text-white font-semibold py-2 px-4 rounded-lg transition
 }
 
