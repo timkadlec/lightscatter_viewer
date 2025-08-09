@@ -12,3 +12,4 @@ __pycache__/
 *.log
 
 uploaded_files
+.idea
