@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}
+    LightScatter Viewer – Error
+{% endblock %}
+
+{% block content %}
+    <div class="upload-container">
+        <div class="logo-section">
+            <img src="{{ url_for('static', filename='ibt_logo.png') }}" alt="IBT Logo" class="h-20 object-contain">
+        </div>
+
+        <h1>
+            LightScatter Viewer
+        </h1>
+
+        <p class="text-red-600 text-center font-semibold mb-6">
+            {{ error.description if error and error.description else "Meow." }}
+        </p>
+
+        <div class="text-center">
+            <a href="{{ url_for('upload_file') }}"
+               class="px-5 py-2 rounded-lg bg-secondary text-white hover:bg-secondary-dark transition">
+                ← Back to Upload
+            </a>
+        </div>
+
+        <div class="footer mt-8 text-gray-400 text-sm text-center">
+            © 2025 by Tim Kadlec
+        </div>
+    </div>
+{% endblock %}

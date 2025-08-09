@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #004b6b;
+    --color-primary-dark: #063a51;
+    --color-secondary: #84bd00;
+    --color-secondary-dark: #6da200;
+}
+
+body {
+    @apply bg-gray-50 min-h-screen flex items-center justify-center p-2
+}
+
+.upload-container {
+    @apply w-full max-w-md bg-white shadow-lg rounded-xl p-6 border border-gray-200
+}
+
+.upload-container .logo-section {
+    @apply flex justify-center mb-8
+}
+
+.upload-container h1 {
+    @apply text-2xl font-semibold text-primary text-center mb-6
+}
+
+.upload-container label {
+    @apply block text-sm font-medium text-gray-700 mb-1
+}
+
+.upload-container input {
+    @apply block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4
+    file:rounded-full file:border-0
+    file:text-sm file:font-semibold
+    file:bg-primary file:text-white
+    hover:file:bg-primary-dark
+}
+
+.upload-container button {
+    @apply w-full bg-secondary hover:bg-secondary-dark text-white font-semibold py-2 px-4 rounded-lg transition
+}
+
+.results-container {
+    @apply max-w-4xl mx-auto bg-white p-6 sm:p-8 shadow transition-shadow rounded-xl border border-gray-200 hover:shadow-lg
+}
+
+.results-container h1 {
+    @apply text-2xl font-bold text-primary mb-6
+}
+
+.results-container .sections {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-6
+}
+
+.results-container .sections .section-card {
+    @apply bg-white rounded-xl border border-gray-200 shadow-sm p-6
+           transition-shadow duration-200 hover:shadow-md;
+}
+
+.results-container .sections .section-card h3 {
+    @apply text-sm font-medium text-gray-600 mb-2
+}
+
+.metadata-line {
+    @apply inline-block bg-primary text-white text-xs font-medium px-3 py-1 rounded-full
+}
+
+.datapoint-list {
+    @apply text-sm text-gray-800
+}
+
+.footer {
+    @apply mt-8 text-xs text-gray-400 text-center
+}

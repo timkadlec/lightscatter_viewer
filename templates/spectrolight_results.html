@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}
+    Results for {{ filename }}
+{% endblock %}
+{% block content %}
+
+    <div class="results-container">
+    <a href="{{ url_for('upload_file') }}"
+       class="inline-block mb-6 px-4 py-2 rounded-lg font-medium text-white bg-primary hover:bg-primary-dark transition">
+        ← Back to Upload
+    </a>
+        <h1>
+            Results for parsed .dat file: <span class="text-gray-800">{{ filename }}</span>
+        </h1>
+
+        <div class="sections">
+            {% for section in sections %}
+                <div class="section-card">
+                    <div class="mb-4">
+                        <h3>Metadata:</h3>
+                        <div class="flex flex-wrap gap-2">
+                            {% for line in section.metadata %}
+                                <span class="metadata-line">
+                                {{ line }}
+                            </span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div>
+                        <h3>
+                            Data (Total records: {{ section.data_points|length }}):
+                        </h3>
+                        <ul class="datapoint-list">
+                            {% for line in section.data_points_equidistant %}
+                                <li>{{ line }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+{% endblock %}
