@@ -12,7 +12,7 @@ body {
 }
 
 .upload-container {
-    @apply w-full max-w-md bg-white shadow-lg rounded-xl p-6 border border-gray-200
+    @apply w-full max-w-md bg-white shadow transition-shadow rounded-xl p-6 border border-gray-200 hover:shadow-lg
 }
 
 .upload-container .logo-section {
