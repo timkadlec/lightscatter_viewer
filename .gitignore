@@ -13,3 +13,6 @@ __pycache__/
 
 uploaded_files
 .idea
+
+# Location where .dat files are stored for testing
+test_files
