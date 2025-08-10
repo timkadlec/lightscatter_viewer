@@ -58,7 +58,7 @@ http://127.0.0.1:7727
 ## 6. Notes
 
 - Uploaded files are stored in the `uploaded_files/` directory, it is automatically created if not present.
-- The app uses CSRF protection via Flask-WTF. `SECRET_KEY` is now in `app.py`, for later use move to `.venv`.
+- The app uses CSRF protection via Flask-WTF. `SECRET_KEY` is now in `app.py`, for later use move to `.env`.
 - TailwindCSS styles must be built before serving if you make changes to `static/css`.
 
 ---
