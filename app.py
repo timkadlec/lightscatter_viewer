@@ -6,10 +6,9 @@ import os
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
-UPLOAD_FOLDER = "uploaded_files"
 
-# In later possible use, migrate to .env
-app.config['SECRET_KEY'] = 'this_is_random_secret_key'
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev-only-change-me')
+UPLOAD_FOLDER = os.getenv('UPLOAD_FOLDER', 'uploaded_files')
 
 
 # Error handler registration

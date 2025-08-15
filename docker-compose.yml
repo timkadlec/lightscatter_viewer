@@ -1,0 +1,12 @@
+services:
+  web:
+    build: .
+    image: spectrolight-app:latest
+    ports:
+      - "8000:8000"
+    environment:
+      SECRET_KEY: "use-a-long-random-string"
+      UPLOAD_FOLDER: "/app/uploaded_files"
+    volumes:
+      - ./uploaded_files:/app/uploaded_files
+    restart: unless-stopped
