@@ -16,3 +16,6 @@ uploaded_files
 
 # Location where .dat files are stored for testing
 test_files
+
+#ignore .env
+.env
