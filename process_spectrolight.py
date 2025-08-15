@@ -112,6 +112,7 @@ def process_spectrolight_dat_file(file_path):
         """
     sections = []
     current_section = {"metadata": [], "data_points": []}
+    found_any_pairs = False
 
     with open(file_path, mode="r", encoding="utf-8") as f:
         for line in f:
@@ -127,6 +128,7 @@ def process_spectrolight_dat_file(file_path):
             # check if it is a pair of scientific numbers
             elif is_pair_of_numbers(line):
                 current_section["data_points"].append(line)
+                found_any_pairs = True
 
             # add to metadata
             else:
@@ -136,8 +138,14 @@ def process_spectrolight_dat_file(file_path):
         if current_section["metadata"] or current_section["data_points"]:
             sections.append(current_section)
 
+    if not found_any_pairs:
+        raise InvalidDatFormatError(
+            "No pairs of scientific numbers found in the file; unsupported .dat format."
+        )
+
     # process datapoint with equidistant - given equidistant value == 10
     for section in sections:
         if section["data_points"]:
-            select_equidistant_data_points(10, section)
+            section["data_points_equidistant"] = pick_equidistant_points(10, section)
+
     return sections
