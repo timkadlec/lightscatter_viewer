@@ -2,6 +2,11 @@ import re
 import numpy
 
 
+class InvalidDatFormatError(Exception):
+    """Raised when a .dat file contains no valid numeric data pairs."""
+    pass
+
+
 def is_scientific_number(input):
     """
     Check whether a string represents a valid scientific number.
