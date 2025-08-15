@@ -56,7 +56,7 @@ def is_new_section(line):
     return bool(re.match(pattern, line))
 
 
-def equidistant_data_points(value, section):
+def select_equidistant_data_points(value, section):
     """
     Select exactly `value` equidistant data points from a section using numpy.
 
@@ -133,5 +133,5 @@ def process_spectrolight_dat_file(file_path):
     # process datapoint with equidistant - given equidistant value == 10
     for section in sections:
         if section["data_points"]:
-            equidistant_data_points(10, section)
+            select_equidistant_data_points(10, section)
     return sections
