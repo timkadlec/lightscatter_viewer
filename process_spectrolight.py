@@ -132,5 +132,6 @@ def process_spectrolight_dat_file(file_path):
 
     # process datapoint with equidistant - given equidistant value == 10
     for section in sections:
-        equidistant_data_points(10, section)
+        if section["data_points"]:
+            equidistant_data_points(10, section)
     return sections
