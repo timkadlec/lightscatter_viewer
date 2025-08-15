@@ -80,7 +80,7 @@ def select_equidistant_data_points(value, section):
     if n <= value:
         section["data_points_equidistant"] = data
     else:
-        indices = numpy.linspace(0, n - 1, value, dtype=int)
+        indices = numpy.linspace(start=0, stop=n - 1, num=value, dtype=int)
         section["data_points_equidistant"] = [data[i] for i in indices]
 
 
@@ -107,7 +107,7 @@ def process_spectrolight_dat_file(file_path):
     sections = []
     current_section = {"metadata": [], "data_points": []}
 
-    with open(file_path, "r", encoding="utf-8") as f:
+    with open(file_path, mode="r", encoding="utf-8") as f:
         for line in f:
             line = line.strip()
 
