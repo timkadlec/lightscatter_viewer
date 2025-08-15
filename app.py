@@ -53,7 +53,7 @@ def upload_and_result():
             elapsed_time=elapsed_time  # Eventual preparation for time that took to process the .dat file
         )
 
-    # If GET request or validation failed
+    # If GET request
     return render_template("upload_page.html", form=form)
 
 

@@ -5,13 +5,20 @@
 {% block content %}
 
     <div class="results-container">
-    <a href="{{ url_for('upload_page') }}"
-       class="inline-block mb-6 px-4 py-2 rounded-lg font-medium text-white bg-primary hover:bg-primary-dark transition">
-        ← Back to Upload
-    </a>
+        <a href="{{ url_for('upload_page') }}"
+           class="inline-block mb-6 px-4 py-2 rounded-lg font-medium text-white bg-primary hover:bg-primary-dark transition">
+            ← Back to Upload
+        </a>
         <h1>
             Results for parsed .dat file: <span class="text-gray-800">{{ filename }}</span>
         </h1>
+        <p class="mt-2 mb-4">
+            {% if elapsed_time < 1 %}
+                Processing time: {{ "%.2f"|format(elapsed_time * 1000) }} ms
+            {% else %}
+                Processing time: {{ "%.2f"|format(elapsed_time) }} s
+            {% endif %}
+        </p>
 
         <div class="sections">
             {% for section in sections %}
