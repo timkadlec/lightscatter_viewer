@@ -19,3 +19,6 @@ test_files
 
 #ignore .env
 .env
+
+#test caches
+.pytest_cache
