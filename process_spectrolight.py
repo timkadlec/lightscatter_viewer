@@ -56,32 +56,33 @@ def is_new_section(line):
     return bool(re.match(pattern, line))
 
 
-def select_equidistant_data_points(value, section):
+def pick_equidistant_points(count, section):
     """
-    Select exactly `value` equidistant data points from a section using numpy.
+    Return up to `count` evenly spaced data points from a section.
 
-    This function uses `numpy.linspace` to generate evenly spaced integer
-    indices across the range of available data points. This guarantees
-    exactly `value` points when the section contains at least that many points.
-    If the section contains fewer than `value` points, all points are returned.
+    If the section contains fewer than `count` points, all points are returned.
+    Otherwise, the function uses NumPy's `linspace` to calculate evenly spaced
+    positions across the full range and returns exactly `count` points.
 
     Args:
-        value (int): The desired number of equidistant points.
-        section (dict): A dictionary containing a 'data_points' list.
-                        The function adds a 'data_points_equidistant' key
-                        containing the selected points.
+        count (int): Number of equidistant points to select.
+        section (dict): Dictionary containing a 'data_points' list.
 
-    Requirements:
-        numpy: This function depends on NumPy for generating equidistant indices.
+    Returns:
+        list: The selected equidistant data points.
+
+    Dependencies:
+        NumPy is required for generating the evenly spaced index positions.
     """
-    data = section["data_points"]
-    n = len(data)
 
-    if n <= value:
-        section["data_points_equidistant"] = data
+    points = section["data_points"]
+    total = len(points)
+
+    if total <= count:
+        return points
     else:
-        indices = numpy.linspace(start=0, stop=n - 1, num=value, dtype=int)
-        section["data_points_equidistant"] = [data[i] for i in indices]
+        positions = numpy.linspace(start=0, stop=total - 1, num=count, dtype=int)
+        return [points[pos] for pos in positions]
 
 
 def process_spectrolight_dat_file(file_path):
